@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains taxonomy_menu.module.
+ */
+
+/**
+ * Implements hook_entity_insert().
+ *
+ * Check for taxonomy term insert.
+ */
+
+function aesop_node_insert() {
+    //$user = user_load($userid); // load a user using its uid
+   // $usermail = 'himanshusharma.cs@gmail.com'; // load user email to send a mail to it OR you can specify an email here to which the email will be sent 
+  //  aesop_mail('default_from', $usermail, 'You Have Won a Draw -- this is the subject',  'Congrats! You have won a draw --this is the body');
+    simple_mail_send('admin123@gmail.com', 'himanshusharma.cs@gmail.com', 'Testing', 'Testing content');
+}
+
+
+
+/**
+ * Mail Function
+ */
+
+/**
+function aesop_mail($from = 'default_from', $to, $subject, $message) {
+    $my_module = 'aesop';
+    $my_mail_token = microtime();
+    if ($from == 'default_from') {
+        // Change this to your own default 'from' email address.
+        $from = variable_get('system_mail', 'admin@yoursite.com');
+    }
+            
+    $message = array(
+        'id' => $my_module . '_' . $my_mail_token,
+        'to' => $to,
+        'subject' => $subject,
+        'body' => array($message),
+        'headers' => array(
+            'From' => $from,
+            'Sender' => $from,
+            'Return-Path' => $from,
+        ),
+    );
+            
+    $system = drupal_mail_system($my_module, $my_mail_token);
+    $message = $system->format($message);
+    if ($system->mail($message)) {
+                return TRUE;
+    } else {
+                return FALSE;
+    }
+}
+ * 
+ */

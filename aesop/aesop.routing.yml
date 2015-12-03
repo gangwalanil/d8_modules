@@ -1,0 +1,7 @@
+aesop.content:
+  path: '/aesop'
+  defaults:
+    _controller: '\Drupal\aesop\Controller\AesopController::content'
+    _title: 'Hello World'
+  requirements:
+    _permission: 'access content'

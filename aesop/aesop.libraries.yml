@@ -1,0 +1,7 @@
+aesop.issue-change:
+  version: VERSION
+  js:
+    js/aesop.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
